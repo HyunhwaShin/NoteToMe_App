@@ -5,19 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFE3EE">
 
-    <!--    <androidx.viewpager.widget.ViewPager-->
-    <!--        android:id="@+id/vp"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
+
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/vp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
 
     <!-- ***일기모음, 설정 화면으로 가는 버튼 layout-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
 
         <ImageButton
             android:id="@+id/diary_imageButton"
@@ -29,46 +32,78 @@
             android:id="@+id/setting_imageButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
+
+            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_setting" />
     </LinearLayout>
     <!--***오늘의 일기-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
         android:text="오늘의 일기"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <!--오늘날짜 출력-->
+    <TextView
+        android:id="@+id/dateNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="33sp"
+        android:textColor="#F2728C"
+        android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
         android:text="오늘 하루는 어땠나요?"
-        android:textSize="20sp"/>
+        android:layout_marginBottom="7dp"
+        android:textSize="15sp"/>
     <EditText
+        android:id="@+id/diary_editText"
         android:layout_width="350dp"
-        android:layout_height="170dp"
+        android:layout_height="140dp"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/edittext_rounded_corner_rectangle"
+        android:privateImeOptions="defaultInputmode=korean"
         />
     <!--***미래 쪽지-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
         android:text="미래로 보내는 쪽지"
-        android:textSize="20sp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="뒤 당신에게 한마디"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="80dp">
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="뒤 당신에게 한마디"
+            android:textSize="15sp"/>
+    </LinearLayout>
     <EditText
+        android:id="@+id/note_editText"
         android:layout_width="350dp"
-        android:layout_height="170dp"
+        android:layout_height="140dp"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/edittext_rounded_corner_rectangle"
+        android:privateImeOptions="defaultInputmode=korean"
         />
-
-
 
 </LinearLayout>

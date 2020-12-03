@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="date_array">
+        <item>일주일</item>
+        <item>1일</item>
+        <item>3일</item>
+        <item>5일</item>
+        <item>10일</item>
+        <item>30일</item>
+        <item>100일</item>
+    </string-array>
+
+</resources>
