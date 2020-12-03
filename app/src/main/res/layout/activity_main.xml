@@ -27,12 +27,13 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="280dp"
-            android:src="@drawable/ic_diary"/>
+            android:backgroundTint="#FFE3EE"
+            android:src="@drawable/ic_diary" />
         <ImageButton
             android:id="@+id/setting_imageButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-
+            android:backgroundTint="#FFE3EE"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_setting" />
     </LinearLayout>
@@ -40,11 +41,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#00FFE3"
         android:text="오늘의 일기"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
     <!--오늘날짜 출력-->
     <TextView
         android:id="@+id/dateNow"
