@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--배달의민족 을지로체 (bm)적용-->
+    <font
+        android:fontStyle="normal"
+        android:font="@font/bm"
+        app:fontStyle="normal"
+        app:font="@font/bm"/>
+
+</font-family>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <!--swipe 첫번째 페이지-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="130dp"
+        android:text="하루의 나를 기록해보세요"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginBottom="180dp"
+        android:layout_gravity="center_horizontal"
+        android:text="하루 끝에 작성하는\n         3줄 일기"
+        android:textSize="33sp" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="right"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_arrow" />
+
+
+
+</LinearLayout>
