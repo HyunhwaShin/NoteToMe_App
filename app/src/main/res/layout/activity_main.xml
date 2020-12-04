@@ -9,10 +9,10 @@
     android:background="#FFE3EE">
 
 
-<!--    <androidx.viewpager.widget.ViewPager-->
-<!--        android:id="@+id/vp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
     <!-- ***일기모음, 설정 화면으로 가는 버튼 layout-->

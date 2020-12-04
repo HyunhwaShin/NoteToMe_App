@@ -24,6 +24,7 @@
         android:text="하루 끝에 작성하는\n         3줄 일기"
         android:textSize="33sp" />
 
+
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"

@@ -22,6 +22,7 @@
         android:text="미래의 나에게 보내는\n\n            응원\n         일정 알림\n         계획 확인"
         android:textSize="33sp" />
 
+
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"

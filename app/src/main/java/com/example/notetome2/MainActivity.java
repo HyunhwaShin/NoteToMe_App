@@ -9,11 +9,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity<val> extends AppCompatActivity {
-//    MyPagerAdapter adapterViewPager;
+    MyPagerAdapter adapterViewPager;
 
     long now = System.currentTimeMillis();
     Date date = new Date(now);
@@ -32,8 +34,9 @@ public class MainActivity<val> extends AppCompatActivity {
     EditText editText;
     EditText editText2;
 
-    SQLiteDatabase database;
+    SQLiteDatabase db;
     String tableName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +45,9 @@ public class MainActivity<val> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //SQlite 연동
         editText = findViewById(R.id.diary_editText);
         editText2 = findViewById(R.id.note_editText);
+
 
         //오늘의 날짜 표시
         dateNow = (TextView) findViewById(R.id.dateNow);
@@ -73,42 +76,39 @@ public class MainActivity<val> extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        ViewPager vp = (ViewPager) findViewById(R.id.vp);
+        adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
+        vp.setAdapter(adapterViewPager);
+        vp.setCurrentItem(0); //앱 실행시 맨 처음 페이지로 이동
     }
-}
-//***********지우면 안됌 !!!!ViewPager 잠시 보류해놓은 것
-//        ViewPager vp = (ViewPager) findViewById(R.id.vp);
-//        adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
-//        vp.setAdapter(adapterViewPager);
-//        vp.setCurrentItem(0); //앱 실행시 맨 처음 페이지로 이동
-//
-//    public static class MyPagerAdapter extends FragmentPagerAdapter {
-//        private static int NUM_ITEMS = 3;
-//
-//         public MyPagerAdapter(FragmentManager fm) {
-//              super(fm);
-//         }
-//
-//    @Override
-//        public int getCount() {
-//         return NUM_ITEMS;
-//        }
-//
-//        @Override
-//        public Fragment getItem(int position) {
-//            switch (position) {
-//                case 0:
-//                    return new FirstIntroFragment();
-//                case 1:
-//                    return new SecondIntroFragment();
-//                case 2:
-//                    return new ThirdIntroFragment();
-//                default:
-//                    return null;
-//            }
-//        }
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return "Page " + position;
-//          }
 
+        public static class MyPagerAdapter extends FragmentPagerAdapter {
+            private static int NUM_ITEMS = 3;
 
+            public MyPagerAdapter(FragmentManager fm) {
+                super(fm);
+            }
+
+            @Override
+            public int getCount() {
+                return NUM_ITEMS;
+            }
+
+            @Override
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0:
+                        return new FirstIntroFragment();
+                    case 1:
+                        return new SecondIntroFragment();
+                    case 2:
+                        return new ThirdIntroFragment();
+                    default:
+                        return null;
+                }
+            }
+
+        }
+    }
