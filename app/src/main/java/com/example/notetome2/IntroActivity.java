@@ -26,10 +26,13 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //최초 실행 판별
+        prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
+            Intent intent= new Intent(IntroActivity.this, MainActivity.class);
+            startActivity(intent);
             finish();
         }
+
         setContentView(R.layout.activity_intro);
 
         viewPager = (ViewPager) findViewById(R.id.vp);
@@ -44,16 +47,10 @@ public class IntroActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                Intent intent= new Intent(IntroActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-    }
-
-    private void launchHomeScreen () {
-        prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(IntroActivity.this, MainActivity.class));
-        finish();
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {

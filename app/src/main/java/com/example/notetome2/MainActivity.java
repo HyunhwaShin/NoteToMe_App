@@ -33,10 +33,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
     EditText editText2;
 
-    SQLiteDatabase db;
-    String tableName;
-
-    public static final int sub =1001;
+//    SQLiteDatabase db;
+//    String tableName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.diary_editText);
         editText2 = findViewById(R.id.note_editText);
 
+        //spinner
+        final String[] data= getResources().getStringArray(R.array.date_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,data);
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
 
         //오늘의 날짜 표시
         dateNow = (TextView) findViewById(R.id.dateNow);
