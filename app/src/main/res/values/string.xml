@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoteToMe2</string>
+    <string name="start"><u>바로 시작하기</u></string>
+</resources>

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_2">
 
     <!--swipe 두번째 페이지-->
     <TextView
@@ -12,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="100dp"
         android:text="미래의 나에게 쪽지를 써보세요"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,15 +21,15 @@
         android:layout_marginBottom="110dp"
         android:layout_gravity="center_horizontal"
         android:text="미래의 나에게 보내는\n\n            응원\n         일정 알림\n         계획 확인"
-        android:textSize="33sp" />
+        android:textSize="28sp" />
 
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="right"
-        android:layout_marginBottom="40dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="40dp"
         android:src="@drawable/ic_arrow" />
 
 

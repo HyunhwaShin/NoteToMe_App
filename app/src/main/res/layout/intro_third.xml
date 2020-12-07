@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_3">
 
     <!--swipe 세번째 페이지-->
 
@@ -14,29 +15,17 @@
         android:layout_marginBottom="220dp"
         android:layout_gravity="center_horizontal"
         android:text="오늘의 나를 기록하고\n 미래의 나에게 쪽지를 \n            써보세요"
-        android:textSize="33sp" />
+        android:textSize="28sp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="245dp"
-            android:text="시작하기"
-            android:textSize="20sp" />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/ic_arrow" />
 
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="40dp"
-            android:src="@drawable/ic_arrow" />
-
-    </LinearLayout>
 
 
 

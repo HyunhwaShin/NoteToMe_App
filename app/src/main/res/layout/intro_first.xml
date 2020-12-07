@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_1">
 
     <!--swipe 첫번째 페이지-->
 
@@ -13,7 +14,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="130dp"
         android:text="하루의 나를 기록해보세요"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
@@ -22,15 +23,15 @@
         android:layout_marginBottom="180dp"
         android:layout_gravity="center_horizontal"
         android:text="하루 끝에 작성하는\n         3줄 일기"
-        android:textSize="33sp" />
+        android:textSize="28sp" />
 
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="right"
-        android:layout_marginBottom="40dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="40dp"
         android:src="@drawable/ic_arrow" />
 
 
