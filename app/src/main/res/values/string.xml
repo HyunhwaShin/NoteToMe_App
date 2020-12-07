@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">NoteToMe2</string>
     <string name="start"><u>바로 시작하기</u></string>
+    <string name="setting_name">[ 알림 시간 설정 ]</string>
 </resources>

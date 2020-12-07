@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#FFE3EE">
+    android:background="@color/bg_main">
 
     <!-- ***일기모음, 설정 화면으로 가는 버튼 layout-->
     <LinearLayout
@@ -20,13 +20,13 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="280dp"
-            android:backgroundTint="#FFE3EE"
+            android:backgroundTint="@color/bg_main"
             android:src="@drawable/ic_diary" />
         <ImageButton
             android:id="@+id/setting_imageButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:backgroundTint="#FFE3EE"
+            android:backgroundTint="@color/bg_main"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_setting" />
     </LinearLayout>
