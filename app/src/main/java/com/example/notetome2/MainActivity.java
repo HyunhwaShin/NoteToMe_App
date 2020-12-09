@@ -24,6 +24,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    private PrefManager prefManager;
     long now = System.currentTimeMillis();
     Date date = new Date(now);
     SimpleDateFormat sdfNow = new SimpleDateFormat("MM-dd-EE");
@@ -33,17 +34,27 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
     EditText editText2;
 
-//    SQLiteDatabase db;
-//    String tableName;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //최초 실행 판별
+        prefManager = new PrefManager(this);
+        if (!prefManager.isFirstTimeLaunch()) {
+            Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+            startActivity(intent);
+        }
 
         setContentView(R.layout.activity_main);
 
         editText = findViewById(R.id.diary_editText);
         editText2 = findViewById(R.id.note_editText);
+
+        DBHelper helper;
+        SQLiteDatabase db;
+        helper = new DBHelper(MainActivity.this, "diary.db", null, 1);
+        db = helper.getWritableDatabase();
+        helper.onCreate(db);
 
         //spinner
         final String[] data= getResources().getStringArray(R.array.date_array);

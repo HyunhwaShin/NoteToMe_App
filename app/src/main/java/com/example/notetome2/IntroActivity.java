@@ -3,6 +3,7 @@ package com.example.notetome2;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,20 +19,11 @@ public class IntroActivity extends AppCompatActivity {
     private MyViewPagerAdapter myViewPagerAdapter;
     private int[] layouts;
     private Button btnStart;
-    private PrefManager prefManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //최초 실행 판별
-        prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-            Intent intent= new Intent(IntroActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
         setContentView(R.layout.activity_intro);
 
@@ -51,6 +43,7 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        finish();
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {
@@ -84,5 +77,11 @@ public class IntroActivity extends AppCompatActivity {
             View view = (View) object;
             container.removeView(view);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+       // Log.d("IntroActivity", "in onDestroy");
     }
 }
