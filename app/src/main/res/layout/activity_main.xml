@@ -29,6 +29,7 @@
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_setting" />
     </LinearLayout>
+
     <!--***오늘의 일기-->
     <TextView
         android:layout_width="wrap_content"
@@ -59,11 +60,13 @@
     <EditText
         android:id="@+id/diary_editText"
         android:layout_width="350dp"
-        android:layout_height="140dp"
+        android:layout_height="160dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/edittext_rounded_corner_rectangle"
         android:privateImeOptions="defaultInputmode=korean"
         />
+
+
     <!--***미래 쪽지-->
     <TextView
         android:layout_width="wrap_content"
@@ -91,13 +94,13 @@
             android:text="뒤 당신에게 한마디"
             android:textSize="15sp"/>
     </LinearLayout>
-    <EditText
-        android:id="@+id/note_editText"
-        android:layout_width="350dp"
-        android:layout_height="140dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/edittext_rounded_corner_rectangle"
-        android:privateImeOptions="defaultInputmode=korean"
-        />
+
+        <EditText
+            android:id="@+id/note_editText"
+            android:layout_width="350dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/edittext_rounded_corner_rectangle"
+            android:privateImeOptions="defaultInputmode=korean" />
 
 </LinearLayout>

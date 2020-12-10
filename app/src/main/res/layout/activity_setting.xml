@@ -41,16 +41,25 @@
         android:id="@+id/time_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:timePickerMode="spinner"/>
+
+    <Button
+        android:id="@+id/btn_setting"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="지정한 시간으로 알림 시간 설정하기"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/bg_1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:text="제작자 정보: \n\n신현화\nE-mail : hhwa@gmail.com"/>
 
 
