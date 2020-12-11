@@ -39,11 +39,9 @@ public class IntroActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(IntroActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
-        finish();
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {
@@ -82,6 +80,9 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-       // Log.d("IntroActivity", "in onDestroy");
+        Log.d("IntroActivity", "in onDestroy");
+
+        PrefManager prefManager = new PrefManager(this);
+        prefManager.setFirstTimeLaunch(false);
     }
 }

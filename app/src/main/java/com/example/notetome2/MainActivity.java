@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -36,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
         //최초 실행 판별
         prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        if (prefManager.isFirstTimeLaunch() == true) {
+            Log.d("In MainActivity", "goto Intro Screen");
             Intent intent = new Intent(MainActivity.this, IntroActivity.class);
             startActivity(intent);
         }
+
         setContentView(R.layout.activity_main);
 
 
@@ -47,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         nEditText = findViewById(R.id.note_editText);
 
         Intent intent = getIntent();
-        if(intent != null) {
-            nNoteId = intent.getLongExtra("id",-1);
+        if (intent != null) {
+            nNoteId = intent.getLongExtra("id", -1);
             String diary = intent.getStringExtra("diary");
             String note = intent.getStringExtra("note");
 
@@ -57,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //spinner
-        final String[] data= getResources().getStringArray(R.array.date_array);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,data);
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        final String[] data = getResources().getStringArray(R.array.date_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, data);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setAdapter(adapter);
 
         //오늘의 날짜 표시
@@ -79,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
         imageButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(intent);  }
+                startActivity(intent);
+            }
         });
     }
 
