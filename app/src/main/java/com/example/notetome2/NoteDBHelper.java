@@ -8,6 +8,7 @@ import android.view.View;
 public class NoteDBHelper extends SQLiteOpenHelper {
     private static NoteDBHelper sInstance;
 
+
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "NoteToMe.db";
     private static final String SQL_CREATE_ENTERS =

@@ -40,6 +40,9 @@
 
         <receiver android:name=".AlarmReceiver" />
 
+        <activity android:name=".SelectDiaryActivity">
+        </activity>
+
     </application>
 
 </manifest>

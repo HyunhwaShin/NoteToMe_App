@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,11 +21,11 @@ public class DiaryActivity extends AppCompatActivity {
 
     private DiaryListAdapter nAdapter;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
+
         RecyclerView rv = (RecyclerView) findViewById(R.id.diary_list);
         Cursor cursor = getCursor();
 
@@ -35,11 +37,6 @@ public class DiaryActivity extends AppCompatActivity {
         RecyclerDecoration spaceDecoration = new RecyclerDecoration(20);
         rv.addItemDecoration(spaceDecoration);
 
-        //리스트 클릭시 받을 intent
-//        Intent intent = getIntent();
-//        TextView textView = findViewById(R.id.diary_listitem);
-//        textView.setText(intent.getStringExtra("TEXT"));
-
         ArrayList<String> dataList = new ArrayList<String>();
         while (cursor.moveToNext()) {
             String data = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_diary));
@@ -48,7 +45,6 @@ public class DiaryActivity extends AppCompatActivity {
         nAdapter = new DiaryListAdapter(this, dataList);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(nAdapter);
-
 
         //home
         ImageButton imageButton3 = (ImageButton) findViewById(R.id.btn_back);
@@ -71,5 +67,4 @@ public class DiaryActivity extends AppCompatActivity {
         return dbHelper.getReadableDatabase().query(NoteContract.NoteEntry.TABLE_NAME,
                 null, null, null, null, null, null);
     }
-
 }
