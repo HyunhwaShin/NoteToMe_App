@@ -80,20 +80,26 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), DiaryActivity.class);
 
-                //SQLite 에 저장
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(NoteContract.NoteEntry.COLUMN_diary,diary);
-                contentValues.put(NoteContract.NoteEntry.COLUMN_note,note);
+                //공백일 경우엔 저장하지 않기 위해서
+                if( dEditText.getText().toString().length() ==0 ){
 
-                //DB 에 전달
-                SQLiteDatabase db = NoteDBHelper.getInstance(getApplicationContext()).getWritableDatabase();
+                }else { //공백이 아니여서 저장하기
 
-                if(nNoteId == -1) {
-                    long newRowID = db.insert(NoteContract.NoteEntry.TABLE_NAME, null, contentValues);
+                    //SQLite 에 저장
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(NoteContract.NoteEntry.COLUMN_diary,diary);
+                    contentValues.put(NoteContract.NoteEntry.COLUMN_note,note);
 
-                    if (newRowID == -1) {
-                    }else {
-                        int count = db.update(NoteContract.NoteEntry.TABLE_NAME, contentValues, NoteContract.NoteEntry._ID+"="+nNoteId,null);
+                    //DB 에 전달
+                    SQLiteDatabase db = NoteDBHelper.getInstance(getApplicationContext()).getWritableDatabase();
+
+                    if(nNoteId == -1) {
+                        long newRowID = db.insert(NoteContract.NoteEntry.TABLE_NAME, null, contentValues);
+
+                        if (newRowID == -1) {
+                        }else {
+                            int count = db.update(NoteContract.NoteEntry.TABLE_NAME, contentValues, NoteContract.NoteEntry._ID+"="+nNoteId,null);
+                        }
                     }
                 }
                 startActivity(intent);
@@ -108,23 +114,27 @@ public class MainActivity extends AppCompatActivity {
                 String diary = dEditText.getText().toString();
                 String note = nEditText.getText().toString();
 
-                //SQLite 에 저장
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(NoteContract.NoteEntry.COLUMN_diary,diary);
-                contentValues.put(NoteContract.NoteEntry.COLUMN_note,note);
-
-                //DB 에 전달
-                SQLiteDatabase db = NoteDBHelper.getInstance(getApplicationContext()).getWritableDatabase();
-
-                if(nNoteId == -1) {
-                    long newRowID = db.insert(NoteContract.NoteEntry.TABLE_NAME, null, contentValues);
-
-                    if (newRowID == -1) {
-                    }else {
-                        int count = db.update(NoteContract.NoteEntry.TABLE_NAME, contentValues, NoteContract.NoteEntry._ID+"="+nNoteId,null);
-                    }
-                }
                 Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+
+                if( dEditText.getText().toString().length() ==0 ){
+
+                }else {
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(NoteContract.NoteEntry.COLUMN_diary,diary);
+                    contentValues.put(NoteContract.NoteEntry.COLUMN_note,note);
+
+                    SQLiteDatabase db = NoteDBHelper.getInstance(getApplicationContext()).getWritableDatabase();
+
+                    if(nNoteId == -1) {
+                        long newRowID = db.insert(NoteContract.NoteEntry.TABLE_NAME, null, contentValues);
+
+                        if (newRowID == -1) {
+                        }else {
+                            int count = db.update(NoteContract.NoteEntry.TABLE_NAME, contentValues, NoteContract.NoteEntry._ID+"="+nNoteId,null);
+                        }
+                    }
+
+                }
                 startActivity(intent);
             }
         });
@@ -136,30 +146,34 @@ public class MainActivity extends AppCompatActivity {
         String diary = dEditText.getText().toString();
         String note = nEditText.getText().toString();
 
-        //SQLite 에 저장
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(NoteContract.NoteEntry.COLUMN_diary,diary);
-        contentValues.put(NoteContract.NoteEntry.COLUMN_note,note);
+        if( dEditText.getText().toString().length() ==0 ){
 
-        //DB 에 전달
-        SQLiteDatabase db = NoteDBHelper.getInstance(this).getWritableDatabase();
-
-        if(nNoteId == -1) {
-            long newRowID = db.insert(NoteContract.NoteEntry.TABLE_NAME, null, contentValues);
-
-            if (newRowID == -1) {
-            }else {
-                Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
-                setResult(RESULT_OK);
-            }
         }else{
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(NoteContract.NoteEntry.COLUMN_diary,diary);
+            contentValues.put(NoteContract.NoteEntry.COLUMN_note,note);
+
+            SQLiteDatabase db = NoteDBHelper.getInstance(this).getWritableDatabase();
+
+            if(nNoteId == -1) {
+                long newRowID = db.insert(NoteContract.NoteEntry.TABLE_NAME, null, contentValues);
+
+                if (newRowID == -1) {
+                }else {
+                    Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK);
+                }
+            }else{
                 int count = db.update(NoteContract.NoteEntry.TABLE_NAME, contentValues, NoteContract.NoteEntry._ID + "=" + nNoteId, null);
                 if (count == 0) {
                 } else {
                     Toast.makeText(this, "수정되었습니다.", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                 }
+            }
+
         }
+
         super.onBackPressed();
     }
 }
