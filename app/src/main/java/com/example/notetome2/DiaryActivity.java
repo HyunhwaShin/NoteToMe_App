@@ -1,30 +1,18 @@
 package com.example.notetome2;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.CursorAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 
 
 public class DiaryActivity extends AppCompatActivity {
@@ -38,6 +26,19 @@ public class DiaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diary);
         RecyclerView rv = (RecyclerView) findViewById(R.id.diary_list);
         Cursor cursor = getCursor();
+
+        // RecyclerView 의 Decoration
+        DividerItemDecoration dividerItemDecoration =
+                new DividerItemDecoration(rv.getContext(),new LinearLayoutManager(this).getOrientation());
+        rv.addItemDecoration(dividerItemDecoration);
+
+        RecyclerDecoration spaceDecoration = new RecyclerDecoration(20);
+        rv.addItemDecoration(spaceDecoration);
+
+        //리스트 클릭시 받을 intent
+//        Intent intent = getIntent();
+//        TextView textView = findViewById(R.id.diary_listitem);
+//        textView.setText(intent.getStringExtra("TEXT"));
 
         ArrayList<String> dataList = new ArrayList<String>();
         while (cursor.moveToNext()) {
