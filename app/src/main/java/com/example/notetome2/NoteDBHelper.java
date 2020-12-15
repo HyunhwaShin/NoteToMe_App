@@ -3,6 +3,7 @@ package com.example.notetome2;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 
 public class NoteDBHelper extends SQLiteOpenHelper {
     private static NoteDBHelper sInstance;
@@ -16,6 +17,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                     NoteContract.NoteEntry._ID,
                     NoteContract.NoteEntry.COLUMN_diary,
                     NoteContract.NoteEntry.COLUMN_note);
+
     public static final String SQL_DELETE_ENTERS =
             "DROP TABLE IF EXISTS " + NoteContract.NoteEntry.TABLE_NAME;
 
@@ -26,7 +28,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
         return sInstance;
     }
 
-    private NoteDBHelper(Context context) {
+    public NoteDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

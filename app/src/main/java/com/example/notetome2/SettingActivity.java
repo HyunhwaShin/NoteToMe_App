@@ -26,8 +26,6 @@ import java.util.Locale;
 
 public class SettingActivity extends AppCompatActivity {
 
- private String hour, minute;
-
  @Override
  protected void onCreate(@Nullable Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
