@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         //최초 실행 판별
         prefManager = new PrefManager(this);
         if (prefManager.isFirstTimeLaunch() == true) {
@@ -173,8 +174,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
         super.onBackPressed();
+
+        //Main 에서 뒤로가기를 눌렀을 때 앱 완전 종료
+        finishAffinity();
+        System.runFinalization();
+        System.exit(0);
+
     }
+
 }
 

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +16,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +24,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 
 
 public class DiaryActivity extends AppCompatActivity {
 
-    //public static final int REQUEST_CODE_INSERT =1000;
     private DiaryListAdapter nAdapter;
 
 
@@ -45,6 +48,7 @@ public class DiaryActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(nAdapter);
 
+
         //home
         ImageButton imageButton3 = (ImageButton) findViewById(R.id.btn_back);
         imageButton3.setOnClickListener(new View.OnClickListener() {
@@ -53,12 +57,18 @@ public class DiaryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if (getIntent().getBooleanExtra("EXIT_ROOT", false)) {
+            this.finishAndRemoveTask();
+            System.exit(0);
+        }
+
     }
 
-    //DB 에서 조회
     private Cursor getCursor() {
         NoteDBHelper dbHelper = NoteDBHelper.getInstance(this);
         return dbHelper.getReadableDatabase().query(NoteContract.NoteEntry.TABLE_NAME,
                 null, null, null, null, null, null);
     }
+
 }

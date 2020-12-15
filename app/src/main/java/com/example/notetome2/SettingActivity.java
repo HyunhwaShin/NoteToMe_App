@@ -119,8 +119,12 @@ public class SettingActivity extends AppCompatActivity {
     startActivity(intent);
    }
   });
- }
 
+  if (getIntent().getBooleanExtra("EXIT_ROOT", false)) {
+   this.finishAndRemoveTask();
+   System.exit(0);
+  }
+ }
 
  void diaryNotification(Calendar calendar) {
 
