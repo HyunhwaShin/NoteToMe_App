@@ -24,14 +24,13 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent notificationIntent = new Intent(context, SettingActivity.class);
+        Intent notificationIntent = new Intent(context, NoteArriveActivity.class);
 
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "default");
-
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
@@ -69,11 +68,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 
             // 내일 같은 시간으로 알람시간 결정
             nextNotifyTime.add(Calendar.DATE, 1);
-
-            //  Preference에 설정한 값 저장
-            SharedPreferences.Editor editor = context.getSharedPreferences("alarm", MODE_PRIVATE).edit();
-            editor.putLong("nextNotifyTime", nextNotifyTime.getTimeInMillis());
-            editor.apply();
 
             Date currentDateTime = nextNotifyTime.getTime();
             String date_text = new SimpleDateFormat("a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);

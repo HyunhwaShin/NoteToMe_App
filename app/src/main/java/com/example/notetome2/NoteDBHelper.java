@@ -13,11 +13,13 @@ public class NoteDBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "NoteToMe.db";
     private static final String SQL_CREATE_ENTERS =
             String.format(
-                    "CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)",
+                    "CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT)",
                     NoteContract.NoteEntry.TABLE_NAME,
                     NoteContract.NoteEntry._ID,
                     NoteContract.NoteEntry.COLUMN_diary,
-                    NoteContract.NoteEntry.COLUMN_note);
+                    NoteContract.NoteEntry.COLUMN_note,
+                    NoteContract.NoteEntry.COLUMN_date,
+                    NoteContract.NoteEntry.COLUMN_alarm);
 
     public static final String SQL_DELETE_ENTERS =
             "DROP TABLE IF EXISTS " + NoteContract.NoteEntry.TABLE_NAME;
@@ -43,4 +45,9 @@ public class NoteDBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ENTERS);
         onCreate(db);
     }
+
+    public static void deleteAll (SQLiteDatabase db){
+        db.execSQL("DELETE FROM nNote");
+    }
+
 }

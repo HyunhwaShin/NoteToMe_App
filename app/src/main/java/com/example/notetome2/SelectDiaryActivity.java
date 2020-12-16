@@ -13,6 +13,7 @@ public class SelectDiaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_selectdiary);
 
         //DIARY 버튼으로 DairyActivity 로 이동
         ImageButton imageButton6 = (ImageButton) findViewById(R.id.btn_diarypage);

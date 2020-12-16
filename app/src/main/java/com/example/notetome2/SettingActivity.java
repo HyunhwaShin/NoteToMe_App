@@ -3,10 +3,12 @@ package com.example.notetome2;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -26,11 +28,18 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class SettingActivity extends AppCompatActivity {
+ SQLiteDatabase db;
+ ContentValues contentValues = new ContentValues();
+
 
  @Override
  protected void onCreate(@Nullable Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_setting);
+
+  db = NoteDBHelper.getInstance(getApplicationContext()).getWritableDatabase();
+
+//  int count = db.update();
 
   final TimePicker mTimePicker = (TimePicker) findViewById(R.id.time_picker);
   mTimePicker.setIs24HourView(true);
@@ -99,13 +108,14 @@ public class SettingActivity extends AppCompatActivity {
 
     Date currentDateTime = calendar.getTime();
     String date_text = new SimpleDateFormat("a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
+    contentValues.put(NoteContract.NoteEntry.COLUMN_alarm,date_text);
+    db.update(NoteContract.NoteEntry.TABLE_NAME,contentValues,null,null);
     Toast.makeText(getApplicationContext(), date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_LONG).show();
 
     //Preference 에 설정한 값 저장
     SharedPreferences.Editor editor = getSharedPreferences("alarm", MODE_PRIVATE).edit();
     editor.putLong("nextNotifyTime", (long) calendar.getTimeInMillis());
     editor.apply();
-
 
     diaryNotification(calendar);
    }
