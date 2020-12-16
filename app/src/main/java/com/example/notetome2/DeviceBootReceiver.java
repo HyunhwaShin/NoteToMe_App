@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.example.notetome2.DI.DiaryList;
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -32,6 +35,7 @@ public class DeviceBootReceiver extends BroadcastReceiver {
             long millis = sharedPreferences.getLong("nextNotifyTime", Calendar.getInstance().getTimeInMillis());
 
             Calendar current_calendar = Calendar.getInstance();
+
             Calendar nextNotifyTime = new GregorianCalendar();
             nextNotifyTime.setTimeInMillis(sharedPreferences.getLong("nextNotifyTime", millis));
 

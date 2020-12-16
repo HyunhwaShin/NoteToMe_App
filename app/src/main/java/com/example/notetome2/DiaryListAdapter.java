@@ -17,17 +17,14 @@ import java.util.ArrayList;
 
 public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.ViewHolder>  {
 
-    public DiaryListAdapter(Context context, ArrayList<String> dataList) {
+    public DiaryListAdapter(Context context, ArrayList<Diary> dataList) {
         this.mContext = context;
         this.dataList = dataList;
     }
 
-    private ArrayList<String> dataList;
+    private ArrayList<Diary> dataList;
     private Context mContext;
     private RecyclerView rv;
-
-    // 리스너 객체 참조를 저장하는 변수
-    private OnItemClickListener mListener = null;
 
     @NonNull
     @Override
@@ -37,21 +34,22 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.diaryText.setText(dataList.get(position));
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        holder.diaryText.setText(dataList.get(position).diary);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, SelectDiaryActivity.class)
+                        .putExtra("diary",dataList.get(position));
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return dataList.size();
     }
-
-    public interface OnItemClickListener
-    { void onItemClick(View v, int position);    }
-
-    // OnItemClickListener 객체 참조를 어댑터에 전달
-    public void setOnItemClickListener(OnItemClickListener listener)
-    { this.mListener = listener; }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -61,20 +59,6 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.View
             super(itemView);
             diaryText = itemView.findViewById(android.R.id.text1);
 
-            //클릭시
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {// 클릭시 이벤트
-
-                        Intent intent = new Intent(mContext, SelectDiaryActivity.class);
-                        mContext.startActivity(intent);
-
-                    }
-                }
-            });
         }
     }
 

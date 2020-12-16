@@ -40,6 +40,7 @@
         android:text="오늘의 일기"
         android:textSize="20sp"
         android:textStyle="bold" />
+
     <!--오늘날짜 출력-->
     <TextView
         android:id="@+id/dateNow"

@@ -8,7 +8,10 @@ public class NoteContract {
 
     public static class NoteEntry implements BaseColumns {
         public static final String TABLE_NAME ="nNote";
-        public static final String COLUMN_diary ="diary";
-        public static final String COLUMN_note ="note";
+        public static final String COLUMN_diary ="diary"; //diary_editText
+        public static final String COLUMN_note ="note"; //note_editText
+        public static final String COLUMN_date = "date"; //오늘날짜 + spinner = 도착 날짜
+        public static final String COLUMN_alarm = "alarm"; //알람 시간
+        public static final String COLUMN_writeDate = "WriteDate"; //diary 를 작성한 날짜
     }
 }

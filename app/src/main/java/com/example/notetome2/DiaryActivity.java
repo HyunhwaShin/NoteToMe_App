@@ -37,10 +37,15 @@ public class DiaryActivity extends AppCompatActivity {
         RecyclerDecoration spaceDecoration = new RecyclerDecoration(20);
         rv.addItemDecoration(spaceDecoration);
 
-        ArrayList<String> dataList = new ArrayList<String>();
+        ArrayList<Diary> dataList = new ArrayList<Diary>();
         while (cursor.moveToNext()) {
-            String data = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_diary));
-            dataList.add(data);
+            Diary diary = new Diary();
+            diary.diary = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_diary));
+            diary.note = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_note));
+            diary.alarm = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_alarm));
+            diary.writeDate = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_writeDate));
+            diary.date = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_date));
+            dataList.add(diary);
         }
         nAdapter = new DiaryListAdapter(this, dataList);
         rv.setLayoutManager(new LinearLayoutManager(this));
