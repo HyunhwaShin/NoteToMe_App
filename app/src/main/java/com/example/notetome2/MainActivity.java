@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         db = NoteDBHelper.getInstance(getApplicationContext()).getWritableDatabase();
         cursor = getCursor();
 
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Diary diary = new Diary();
             diary.date = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_date));
             diary.diary = cursor.getString(cursor.getColumnIndexOrThrow(NoteContract.NoteEntry.COLUMN_diary));
@@ -98,40 +98,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View arg1,
                                        int position, long id) {
-                Calendar c =Calendar.getInstance();
+                Calendar c = Calendar.getInstance();
                 String writeDate = new SimpleDateFormat("yyyy년 MM월 dd일").format(c.getTime());
 
-                if(position == 0){//일주일 선택
+                if (position == 0) {//일주일 선택
                     c.add(Calendar.DATE, 7);
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     dateString = df.format(c.getTime());
 
-                }else if(position == 1){//1일
+                } else if (position == 1) {//1일
                     c.add(Calendar.DATE, 1);
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     dateString = df.format(c.getTime());
 
-                }else if(position == 2){//3일
+                } else if (position == 2) {//3일
                     c.add(Calendar.DATE, 3);
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     dateString = df.format(c.getTime());
 
-                }else if(position == 3){//5일
+                } else if (position == 3) {//5일
                     c.add(Calendar.DATE, 5);
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     dateString = df.format(c.getTime());
 
-                }else if(position == 4){//10일
+                } else if (position == 4) {//10일
                     c.add(Calendar.DATE, 10);
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     dateString = df.format(c.getTime());
 
-                }else if(position == 5){//30일
+                } else if (position == 5) {//30일
                     c.add(Calendar.DATE, 30);
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     dateString = df.format(c.getTime());
 
-                }else if(position == 6){//100일
+                } else if (position == 6) {//100일
                     c.add(Calendar.DATE, 100);
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     dateString = df.format(c.getTime());
@@ -140,8 +140,9 @@ public class MainActivity extends AppCompatActivity {
                 //DB 에 date 저장
                 contentValues.put(NoteContract.NoteEntry.COLUMN_date, dateString);
                 contentValues.put(NoteContract.NoteEntry.COLUMN_writeDate, writeDate);
-                Log.d("date",dateString);
+                Log.d("date", dateString);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -161,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 String diary = dEditText.getText().toString();
                 String note = nEditText.getText().toString();
 
-                Intent intent = new Intent(getApplicationContext(),DiaryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DiaryActivity.class);
 
                 //공백일 경우엔 저장하지 않기 위해서
                 if( dEditText.getText().toString().length() ==0 ){
@@ -182,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 startActivity(intent);
-
             }
         });
 

@@ -18,9 +18,9 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                     NoteContract.NoteEntry._ID,
                     NoteContract.NoteEntry.COLUMN_diary,
                     NoteContract.NoteEntry.COLUMN_note,
-                    NoteContract.NoteEntry.COLUMN_writeDate,
                     NoteContract.NoteEntry.COLUMN_date,
-                    NoteContract.NoteEntry.COLUMN_alarm);
+                    NoteContract.NoteEntry.COLUMN_alarm,
+                    NoteContract.NoteEntry.COLUMN_writeDate);
 
     public static final String SQL_DELETE_ENTERS =
             "DROP TABLE IF EXISTS " + NoteContract.NoteEntry.TABLE_NAME;

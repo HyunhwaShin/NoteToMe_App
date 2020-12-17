@@ -17,6 +17,7 @@ public class SelectDiaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_selectdiary);
 
         dateText = findViewById(R.id.text_date);
         contentText = findViewById(R.id.text_letter);
