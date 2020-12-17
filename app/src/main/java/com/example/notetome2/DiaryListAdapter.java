@@ -52,16 +52,16 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.View
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView diaryText;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             diaryText = itemView.findViewById(android.R.id.text1);
 
         }
     }
-
 
 }
 

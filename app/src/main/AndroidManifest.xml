@@ -30,7 +30,7 @@
         </activity>
         <activity android:name=".SettingActivity">
         </activity>
-        <activity android:name=".SelectDiaryActivity">
+        <activity android:name=".NoteArriveActivity">
         </activity>
 
         <receiver android:name=".DeviceBootReceiver"
@@ -41,6 +41,9 @@
         </receiver>
 
         <receiver android:name=".AlarmReceiver" />
+
+        <activity android:name=".SelectDiaryActivity">
+        </activity>
 
     </application>
 

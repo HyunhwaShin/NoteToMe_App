@@ -11,24 +11,24 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.notetome2.DI.DiaryList;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.function.Consumer;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
+    private String note;
     @Override
     public void onReceive(Context context, Intent intent) {
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent notificationIntent = new Intent(context, SettingActivity.class);
-
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "default");
 
@@ -49,21 +49,36 @@ public class AlarmReceiver extends BroadcastReceiver {
             }
         }else builder.setSmallIcon(R.mipmap.ic_launcher);
 
-
-        builder.setAutoCancel(true)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setWhen(System.currentTimeMillis())
-
-                .setTicker("{Time to watch some cool stuff!}")
-                .setContentTitle("띵동! 당신이 보낸 미래쪽지가 도착했어요!")
-                .setContentText("얼른 확인하러 가보세요")
-                .setContentInfo("INFO")
-                .setContentIntent(pendingIntent);
-
         if (notificationManager != null) {
 
             // 노티피케이션 동작시킴
-            notificationManager.notify(1234, builder.build());
+            Calendar alarm = Calendar.getInstance();
+            SharedPreferences sharedPreferences = context.getSharedPreferences("alarm", MODE_PRIVATE);
+            alarm.setTimeInMillis(sharedPreferences.getLong("nextNotifyTime", Calendar.getInstance().getTimeInMillis()));
+            String alarm_text = new SimpleDateFormat(" a hh시 mm분 ").format(alarm.getTime());
+            for(Diary diary : DiaryList.data){
+                Calendar now = Calendar.getInstance();
+                String now_date_text = new SimpleDateFormat("yyyy/MM/dd").format(now.getTime());
+                if(diary.date.equals(now_date_text) && diary.alarm.trim().replaceAll(" ","").equals(alarm_text.trim().replaceAll(" ",""))){
+                    note = diary.note;
+                    notificationIntent.putExtra("note",note);
+
+                    PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_ONE_SHOT);
+
+                    builder.setAutoCancel(true)
+                            .setDefaults(NotificationCompat.DEFAULT_ALL)
+                            .setWhen(System.currentTimeMillis())
+
+                            .setTicker("{Time to watch some cool stuff!}")
+                            .setContentTitle("띵동! 당신이 보낸 미래쪽지가 도착했어요!")
+                            .setContentText("얼른 확인하러 가보세요")
+                            .setContentInfo("INFO")
+                            .setContentIntent(pendingIntent);
+
+                    notificationManager.notify(1234, builder.build());
+
+                }
+            }
 
             Calendar nextNotifyTime = Calendar.getInstance();
 
