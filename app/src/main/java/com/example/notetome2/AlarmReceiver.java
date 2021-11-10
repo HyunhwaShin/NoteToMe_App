@@ -35,7 +35,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
-            builder.setSmallIcon(R.drawable.ic_app);
+            builder.setSmallIcon(R.drawable.arrive_icon);
 
             String channelName ="알람 채널";
             String description = "정해진 시간에 알람합니다";

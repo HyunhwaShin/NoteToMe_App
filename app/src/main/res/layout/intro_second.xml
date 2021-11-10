@@ -11,17 +11,19 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         android:text="미래의 나에게 쪽지를 써보세요"
         android:textSize="20sp" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="260dp"
         android:layout_marginBottom="110dp"
         android:layout_gravity="center_horizontal"
-        android:text="미래의 나에게 보내는\n\n            응원\n         일정 알림\n         계획 확인"
-        android:textSize="28sp" />
+        android:textAlignment="center"
+        android:text="미래의 나에게 보내는\n\n응원\n일정 알림\n계획 확인"
+        android:textSize="25sp" />
 
 
     <ImageView

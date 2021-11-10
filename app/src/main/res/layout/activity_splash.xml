@@ -3,19 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/bg_main">
 
     <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="250dp"
-        android:src="@drawable/note_icon"
+        android:src="@drawable/splash_icon"
         android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textSize="17sp"
         android:textStyle="bold"
         android:text="나에게 쓰는 쪽지"

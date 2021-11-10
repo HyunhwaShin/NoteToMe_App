@@ -8,14 +8,23 @@
     android:background="@color/bg_3">
 
     <!--swipe 세번째 페이지-->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="240dp"
         android:layout_gravity="center_horizontal"
-        android:text="오늘의 나를 기록하고\n 미래의 나에게 쪽지를 \n            써보세요"
+        android:textAlignment="center"
+        android:text="오늘의 나를 기록하고\n 미래의 나에게 쪽지를\n써보세요"
         android:textSize="28sp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/heart"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="100dp"/>
+
 
     <ImageView
         android:layout_width="30dp"
@@ -24,9 +33,5 @@
         android:layout_marginBottom="60dp"
         android:layout_marginRight="40dp"
         android:src="@drawable/ic_arrow" />
-
-
-
-
 
 </LinearLayout>
